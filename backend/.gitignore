@@ -1,0 +1,22 @@
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+ca.pem
+*.pem
+
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor & OS
+.DS_Store
+Thumbs.db
+.vscode/

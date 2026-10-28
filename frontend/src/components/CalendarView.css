@@ -1,0 +1,206 @@
+.calendar-container {
+  background-color: #ffffff;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calendar-header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.25rem;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-nav,
+.btn-today {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #334155;
+  transition: background-color 0.2s;
+}
+
+.btn-nav:hover,
+.btn-today:hover {
+  background-color: #e2e8f0;
+}
+
+/* Header Nama Hari */
+.calendar-days-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  color: #64748b;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* Grid Kalender */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1px;
+  background-color: #e2e8f0;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.calendar-cell {
+  background-color: #ffffff;
+  height: 120px; /* KUNCI 1: Mengunci tinggi kotak agar tidak memanjang ke bawah */
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden; /* Mencegah elemen keluar dari kotak */
+}
+
+.calendar-cell.empty {
+  background-color: #f8fafc;
+}
+
+.calendar-cell.today {
+  background-color: #eff6ff;
+}
+
+.cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.375rem;
+}
+
+.day-number {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #1e293b;
+}
+
+.today .day-number {
+  background-color: #2563eb;
+  color: #ffffff;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+.task-count {
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+/* Tampilan Chip Tugas di Kalender */
+.cell-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow-y: auto; /* Memunculkan scroll internal jika tugas lebih dari 2 */
+  flex: 1; /* Mengisi sisa ruang tinggi */
+  min-height: 0; /* KUNCI 2: Memaksa Flexbox agar mematuhi overflow-y (tidak melebar) */
+}
+
+/* Menyesuaikan desain scrollbar agar lebih tipis & rapi di dalam kotak */
+.cell-tasks::-webkit-scrollbar {
+  width: 4px;
+}
+.cell-tasks::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+
+.calendar-task-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.task-dot {
+  font-size: 0.5rem;
+  flex-shrink: 0; /* Menjaga agar titik tidak ikut mengecil */
+}
+
+.task-title-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1; /* KUNCI 3: Memaksa teks memotong sisa ruang dengan titik-titik (ellipsis) */
+}
+
+/* Warna Chip sesuai Prioritas */
+.priority-low {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.priority-medium {
+  background-color: #fef3c7;
+  color: #b45309;
+}
+
+.priority-high {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}
+
+@media screen and (max-width: 768px) {
+  .calendar-container {
+    padding: 1rem;
+    overflow-x: auto; /* Kunci utama: Memunculkan scroll ke samping */
+    -webkit-overflow-scrolling: touch; /* Efek scroll mulus di layar sentuh */
+  }
+
+  /* Memaksa kalender memiliki lebar minimal agar kotak tidak tergencet */
+  .calendar-days-header,
+  .calendar-grid {
+    min-width: 600px;
+  }
+
+  .calendar-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .calendar-cell {
+    height: 100px; /* Menjaga kotak tetap lega untuk tugas */
+  }
+}
+
+.day-number {
+  font-size: 0.75rem;
+}
+
+.calendar-task-chip {
+  padding: 0.1rem 0.2rem;
+  font-size: 0.65rem;
+}
+
+/* Nama hari (Sen, Sel, Rab) diperkecil */
+.calendar-days-header {
+  font-size: 0.7rem;
+}

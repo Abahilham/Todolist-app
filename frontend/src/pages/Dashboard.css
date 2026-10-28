@@ -1,0 +1,847 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+/* 1. CSS VARIABLES (TEMA ARIDEV STUDIO) */
+:root {
+  --bg-main: #f4f6f8;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: rgba(15, 23, 42, 0.08);
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  --danger: #ef4444;
+  --success: #10b981;
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.03);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --radius-lg: 20px;
+  --radius-md: 12px;
+}
+
+body.dark-mode {
+  --bg-main: #070b14; /* Dark Blue Slate ala Creative Agency */
+  --card-bg: #111827;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --primary: #3b82f6;
+  --shadow-sm: 0 4px 20px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. GLOBAL LAYOUT & TYPOGRAPHY */
+body,
+#root {
+  background-color: var(--bg-main) !important;
+  color: var(--text-main);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.dashboard-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* 3. HEADER / NAVBAR */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--card-bg);
+  padding: 1.2rem 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.user-profile-section {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.user-name {
+  color: var(--text-main);
+  font-weight: 600;
+}
+.user-email {
+  color: var(--text-muted);
+}
+
+/* Tombol Dark Mode & Logout */
+.btn-dark-mode,
+.btn-logout {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  border-radius: 50px;
+  padding: 0.5rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-dark-mode {
+  width: 45px;
+  padding: 0;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-logout:hover {
+  background: var(--danger);
+  color: white;
+  border-color: var(--danger);
+}
+.btn-dark-mode:hover {
+  background: var(--card-bg);
+  transform: rotate(15deg);
+}
+
+/* 4. BENTO GRID ANALYTICS (MODERN WIDGETS) */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.analytics-card {
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.analytics-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.analytics-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: var(--bg-main);
+}
+
+.analytics-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.analytics-value {
+  color: var(--text-main);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* 5. KARTU & FORM (CLEAN UI) */
+.dashboard-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 2rem;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  padding: 1.8rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-title {
+  color: var(--text-main);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.form-label {
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: inherit;
+  transition: border 0.3s ease;
+  margin-bottom: 1.2rem;
+  box-sizing: border-box;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.btn-submit,
+.btn-export {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  width: 100%;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.2s ease;
+}
+.btn-submit:hover,
+.btn-export:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* 6. FILTER BAR & DAFTAR TUGAS */
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg-main);
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+
+.filter-bar input,
+.filter-bar select {
+  margin-bottom: 0;
+  border: none;
+  background: transparent;
+}
+.btn-export {
+  width: auto;
+  padding: 0.5rem 1.5rem;
+}
+
+/* Membatasi tinggi daftar tugas agar sejajar dengan Time Tracker */
+.task-list {
+  /* (Catatan: Sesuaikan nama class ini jika di kodemu namanya berbeda) */
+  max-height: 550px; /* Angka ini bisa kamu naik-turunkan (misal 500px) agar sejajar pas dengan Time Tracker */
+  overflow-y: auto; /* Memunculkan scroll vertikal jika tugas melebihi batas */
+  padding-right: 10px; /* Memberi jarak agar batang scroll tidak menabrak tombol hapus/edit */
+}
+
+/* Mempercantik tampilan batang scroll (Scrollbar) khusus untuk daftar tugas */
+.task-list::-webkit-scrollbar {
+  width: 8px;
+}
+.task-list::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}
+.task-list::-webkit-scrollbar-track {
+  background-color: #f1f5f9;
+}
+
+.task-item {
+  background: var(--bg-main);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  padding: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+}
+
+.task-item:hover {
+  border-color: var(--primary);
+}
+.task-item.completed {
+  opacity: 0.6;
+  border-left: 4px solid var(--success);
+}
+
+.task-info h4 {
+  color: var(--text-main);
+  margin: 0 0 0.4rem 0;
+  font-size: 1.1rem;
+}
+.task-info p {
+  color: var(--text-muted);
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+}
+.task-completed-text {
+  text-decoration: line-through;
+}
+
+.task-meta {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.badge {
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.badge-high {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger);
+}
+.badge-medium {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+.badge-low {
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--primary);
+}
+.badge-completed {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--success);
+}
+.duration-badge,
+.date-badge {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.3rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  color: var(--text-main);
+}
+
+.task-actions button {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-left: 0.5rem;
+}
+.task-actions button:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* 7. PENYEMPURNAAN KALENDER */
+.rbc-calendar,
+.react-calendar {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  color: var(--text-main) !important;
+  font-family: inherit;
+}
+.rbc-header,
+.rbc-day-bg,
+.rbc-month-row,
+.rbc-month-view {
+  border-color: var(--border-color) !important;
+}
+.rbc-date-cell,
+.rbc-header {
+  color: var(--text-main) !important;
+  font-weight: 600;
+}
+.rbc-off-range-bg {
+  background-color: var(--bg-main) !important;
+}
+.rbc-btn-group button {
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+}
+.rbc-btn-group button:hover,
+.rbc-btn-group button.rbc-active {
+  background: var(--primary) !important;
+  color: white !important;
+}
+
+/* Responsive Layout */
+@media (max-width: 1024px) {
+  .dashboard-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 8. FIX & PENYEMPURNAAN (AVATAR, DROPDOWN, KALENDER, TIME TRACKER) */
+
+/* --- Fix Avatar --- */
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+.user-avatar-placeholder {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Fix Dropdown Option Background di Dark Mode */
+.form-select option {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+}
+
+/* Fix Kalender di Dark Mode (Latar Belakang & Teks) */
+body.dark-mode .rbc-calendar,
+body.dark-mode .rbc-month-view,
+body.dark-mode .rbc-time-view,
+body.dark-mode .rbc-day-bg,
+body.dark-mode .rbc-header {
+  background-color: var(
+    --card-bg
+  ) !important; /* Memaksa kotak dalam kalender menjadi gelap */
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .rbc-off-range-bg {
+  background-color: var(--bg-main) !important;
+}
+
+body.dark-mode .rbc-date-cell,
+body.dark-mode .rbc-header,
+body.dark-mode .rbc-toolbar button {
+  color: var(--text-main) !important; /* Memaksa angka/teks menjadi putih */
+}
+
+body.dark-mode .rbc-toolbar button {
+  background-color: var(--bg-main) !important;
+  border-color: var(--border-color) !important;
+}
+
+body.dark-mode .rbc-toolbar button:hover,
+body.dark-mode .rbc-toolbar button.rbc-active {
+  background-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+/* --- Merombak Time Tracker Menjadi Modern (Light & Dark Mode) --- */
+/* 1. Menghilangkan background transparan bawaan */
+.dashboard-content > div:first-child > div:last-child > div {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* 2. Menyesuaikan warna teks judul "⏱ Time Tracker" */
+.dashboard-content > div:first-child > div:last-child h2,
+.dashboard-content > div:first-child > div:last-child h3 {
+  color: var(--text-main) !important;
+  font-family: inherit !important;
+  margin-bottom: 1rem !important;
+}
+
+/* 3. Gaya Futuristik untuk Kotak Angka Digital (00:00:00) */
+.dashboard-content
+  > div:first-child
+  > div:last-child
+  > div
+  > div:first-of-type {
+  background-color: var(--bg-main) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--primary) !important;
+  border-radius: var(--radius-md) !important;
+  font-size: 2.8rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 3px !important;
+  padding: 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+  display: flex;
+  justify-content: center;
+}
+
+/* 4. Menghilangkan kotak hitam kaku di belakang tombol */
+.dashboard-content > div:first-child > div:last-child > div > div:last-child {
+  background-color: transparent !important;
+  padding: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+}
+
+/* 5. Mengubah desain tombol Start & Reset menjadi membulat (Pill) */
+.dashboard-content > div:first-child > div:last-child button {
+  border-radius: 50px !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
+  font-weight: 700 !important;
+  padding: 0.7rem 1.8rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-size: 0.85rem !important;
+  border: none !important;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+.dashboard-content > div:first-child > div:last-child button:hover {
+  transform: translateY(-2px) !important;
+  opacity: 0.9 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Fix Ikon Kalender pada Input Date di Dark Mode */
+body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(100%);
+  cursor: pointer;
+}
+
+/* 9. TOAST NOTIFICATION (MODERN ALERTS) */
+.custom-toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--card-bg);
+  color: var(--text-main);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 600;
+  z-index: 9999;
+  animation: slideInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  border: 1px solid var(--border-color);
+  border-left: 5px solid transparent;
+}
+
+.toast-success {
+  border-left-color: var(--success);
+}
+
+.toast-error {
+  border-left-color: var(--danger);
+}
+
+.toast-icon {
+  font-size: 1.2rem;
+}
+
+/* Animasi melayang dari bawah (Bounce effect) */
+@keyframes slideInUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* MODAL / POP-UP STYLES (Untuk Ganti Sandi) */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Latar belakang hitam transparan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px); /* Efek blur ala Apple */
+}
+
+.modal-box {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.8rem;
+}
+
+.btn-close {
+  background: transparent !important;
+  border: none !important;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-close:hover {
+  color: #ef4444;
+}
+
+/* Memastikan input di dalam modal memanjang penuh */
+.modal-form .form-group {
+  margin-bottom: 1rem;
+}
+.modal-form .form-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* ========================================================
+   ATURAN WARNA SAAT DARK MODE AKTIF (MODAL/POP-UP)
+   ======================================================== */
+body.dark-mode .modal-box {
+  background-color: #1e293b; /* Warna latar gelap */
+  border: 1px solid #334155;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .modal-header {
+  border-bottom: 1px solid #334155;
+}
+
+body.dark-mode .modal-header h3 {
+  color: #f8fafc; /* Judul menjadi putih terang */
+}
+
+body.dark-mode .form-label {
+  color: #cbd5e1; /* Label input menjadi abu-abu terang */
+}
+
+/* --- TAMBAHAN BARU: Mencerahkan kolom input yang hitam pekat --- */
+body.dark-mode .modal-form .form-input {
+  background-color: #334155;
+  color: #f8fafc;
+  border: 1px solid #475569;
+}
+
+body.dark-mode .modal-form .form-input:focus {
+  border-color: #3b82f6;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* --------------------------------------------------------------- */
+
+body.dark-mode .btn-cancel {
+  background-color: #334155;
+  color: #f1f5f9;
+  border: none; /* Memastikan tidak ada garis pinggir bawaan */
+}
+
+body.dark-mode .btn-cancel:hover {
+  background-color: #475569;
+}
+
+/* Memastikan ikon X (Close) lebih terang di latar gelap */
+body.dark-mode .btn-close {
+  color: #94a3b8;
+}
+
+body.dark-mode .btn-close:hover {
+  color: #ef4444; /* Berubah merah saat disorot */
+}
+
+/* 1. Mencegah layar tergeser (Horizontal Scroll) dari akar (body) */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* 2. HEADER: Memaksa susunan turun ke bawah dan rata tengah */
+  .dashboard-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    height: auto;
+  }
+
+  .user-profile-section {
+    flex-direction: column; /* Memaksa isi header turun ke bawah */
+    width: 100%;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+
+  .user-info {
+    flex-direction: column; /* Memaksa avatar dan nama turun ke bawah */
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .user-details {
+    align-items: center;
+  }
+
+  /* Membuat tombol mode gelap dan logout berjejer rata tengah */
+  /* Mengatur tombol Logout agar tetap memanjang rapi di tengah */
+  .btn-logout {
+    width: 100%;
+    max-width: 250px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  /* Mengembalikan tombol Dark Mode ke bentuk aslinya (bulat/kotak kecil) */
+  .btn-dark-mode {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* 3. ANALYTICS CARD: Menyesuaikan agar penuh ke samping */
+  .analytics-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 Kolom rata kiri-kanan */
+    gap: 10px;
+  }
+
+  .analytics-card {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 4. FORM & KARTU KONTEN: Memastikan tidak melebihi layar */
+  .dashboard-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .card {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.2rem;
+    margin: 0;
+  }
+
+  .form-input,
+  .form-select,
+  textarea,
+  .btn-submit {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* 5. FILTER BAR & DAFTAR TUGAS */
+  .filter-bar {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .filter-bar input,
+  .filter-bar select,
+  .btn-export {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .task-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .task-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important; /* Mencegah tombol jatuh ke bawah */
+    gap: 8px; /* Jarak antar tombol */
+    min-width: max-content; /* Memaksa agar ruang tombol selalu cukup */
+  }
+
+  .task-content,
+  .task-text {
+    flex: 1; /* Biarkan teks mengisi sisa ruang */
+    min-width: 0; /* Penting: mencegah teks mendorong tombol */
+    word-wrap: break-word; /* Teks otomatis ke bawah jika mentok */
+  }
+}
+
+/* Khusus HP dengan Layar Sangat Kecil (Lebar di bawah 480px) */
+@media screen and (max-width: 480px) {
+  .analytics-grid {
+    grid-template-columns: 1fr; /* Kotak analytics berubah jadi 1 kolom turun ke bawah */
+  }
+}
