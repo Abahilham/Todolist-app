@@ -819,29 +819,40 @@ body {
 
   /* ... kode @media lainnya ... */
 
+  /* Mengunci agar Checkbox dan Teks selalu berdampingan ke samping (row) */
   .task-header-row {
-    display: flex;
-    flex-direction: row; /* KEMBALIKAN ke row agar checkbox sejajar di kiri teks */
-    align-items: flex-start;
-    gap: 16px; /* Memberi jarak renggang antara checkbox, teks, dan tombol */
-    flex-wrap: wrap; /* KUNCI RESPONSIF: Jika layar HP sangat kecil, elemen akan otomatis turun ke bawah dengan rapi tanpa berdempetan */
-  }
-
-  .task-info,
-  .task-content,
-  .task-text {
-    flex: 1; /* Biarkan teks mengisi sisa ruang di tengah */
-    min-width: 150px; /* Batas aman agar teks tidak terlalu terjepit sebelum turun ke baris baru */
-    word-wrap: break-word;
-  }
-
-  .task-actions {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    gap: 8px; /* Jarak renggang antar tombol (Edit & Hapus) */
-    min-width: max-content; /* Memastikan ruang tombol selalu utuh */
-    margin-left: auto; /* Mendorong kelompok tombol ke ujung kanan */
+    align-items: flex-start !important;
+    flex-wrap: nowrap !important; /* KUNCI: Memaksa checkbox tidak pindah ke baris atas/bawah */
+    gap: 16px !important; /* Jarak antara checkbox dan teks */
+  }
+
+  /* Mengunci ukuran checkbox agar proporsional dan tidak tergencet */
+  .task-checkbox {
+    margin-top: 4px !important; /* Menurunkan sedikit agar sejajar dengan teks judul */
+    flex-shrink: 0 !important;
+    width: 18px !important;
+    height: 18px !important;
+    cursor: pointer;
+  }
+
+  /* Mengunci area teks (Judul & Deskripsi) */
+  .task-info {
+    flex: 1 1 auto !important; /* Biarkan teks mengisi ruang kosong di tengah */
+    min-width: 0 !important; /* Mencegah teks mendesak elemen lain keluar jalur */
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Merapikan jarak dari judul ke deskripsi */
+  .task-info h4 {
+    margin: 0 0 6px 0 !important;
+  }
+
+  /* Merapikan jarak dari deskripsi ke deretan badge/waktu */
+  .task-info p {
+    margin: 0 0 12px 0 !important;
   }
 
   /* Khusus HP dengan Layar Sangat Kecil (Lebar di bawah 480px) */
