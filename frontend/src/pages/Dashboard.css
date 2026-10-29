@@ -817,31 +817,37 @@ body {
     box-sizing: border-box;
   }
 
+  /* ... kode @media lainnya ... */
+
   .task-header-row {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row; /* KEMBALIKAN ke row agar checkbox sejajar di kiri teks */
     align-items: flex-start;
-    gap: 0.8rem;
+    gap: 16px; /* Memberi jarak renggang antara checkbox, teks, dan tombol */
+    flex-wrap: wrap; /* KUNCI RESPONSIF: Jika layar HP sangat kecil, elemen akan otomatis turun ke bawah dengan rapi tanpa berdempetan */
+  }
+
+  .task-info,
+  .task-content,
+  .task-text {
+    flex: 1; /* Biarkan teks mengisi sisa ruang di tengah */
+    min-width: 150px; /* Batas aman agar teks tidak terlalu terjepit sebelum turun ke baris baru */
+    word-wrap: break-word;
   }
 
   .task-actions {
     display: flex !important;
     flex-direction: row !important;
-    flex-wrap: nowrap !important; /* Mencegah tombol jatuh ke bawah */
-    gap: 8px; /* Jarak antar tombol */
-    min-width: max-content; /* Memaksa agar ruang tombol selalu cukup */
+    flex-wrap: nowrap !important;
+    gap: 8px; /* Jarak renggang antar tombol (Edit & Hapus) */
+    min-width: max-content; /* Memastikan ruang tombol selalu utuh */
+    margin-left: auto; /* Mendorong kelompok tombol ke ujung kanan */
   }
 
-  .task-content,
-  .task-text {
-    flex: 1; /* Biarkan teks mengisi sisa ruang */
-    min-width: 0; /* Penting: mencegah teks mendorong tombol */
-    word-wrap: break-word; /* Teks otomatis ke bawah jika mentok */
-  }
-}
-
-/* Khusus HP dengan Layar Sangat Kecil (Lebar di bawah 480px) */
-@media screen and (max-width: 480px) {
-  .analytics-grid {
-    grid-template-columns: 1fr; /* Kotak analytics berubah jadi 1 kolom turun ke bawah */
+  /* Khusus HP dengan Layar Sangat Kecil (Lebar di bawah 480px) */
+  @media screen and (max-width: 480px) {
+    .analytics-grid {
+      grid-template-columns: 1fr; /* Kotak analytics berubah jadi 1 kolom turun ke bawah */
+    }
   }
 }
