@@ -13,7 +13,16 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://todolist-app-96vj.vercel.app", // Izinkan frontend Vercel milikmu
+      "http://localhost:3000", // Izinkan localhost untuk testing di laptop (opsional)
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 // Routes API
