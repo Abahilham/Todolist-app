@@ -100,7 +100,7 @@ export default function Dashboard() {
 
     try {
       await API.put("/user/change-password", {
-        userId: user?.id, // Menggunakan optional chaining agar aman tidak crash
+        userId: user?.id,
         oldPassword: passwordData.oldPassword,
         newPassword: passwordData.newPassword,
       });
@@ -363,6 +363,13 @@ export default function Dashboard() {
             {isDarkMode ? "☀️" : "🌙"}
           </button>
 
+          {/* TOMBOL EDIT PROFIL BARU */}
+          <button
+            onClick={() => navigate("/profile")}
+            className="btn-action btn-edit-profile"
+          >
+            ✏️ Edit Profil
+          </button>
           <button
             onClick={() => setIsPasswordModalOpen(true)}
             className="btn-action btn-save"

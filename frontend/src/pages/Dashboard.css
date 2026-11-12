@@ -698,6 +698,25 @@ body.dark-mode .btn-close:hover {
   color: #ef4444;
 }
 
+/* Tambahan untuk tombol Edit Profil */
+.btn-edit-profile {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
+}
+
+.btn-edit-profile:hover {
+  background-color: #0056b3;
+  transform: scale(1.02);
+}
+
 /* 11. RESPONSIVE MOBILE (DIPISAH DENGAN RAPI) */
 @media screen and (max-width: 1024px) {
   .dashboard-content {
