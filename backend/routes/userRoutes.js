@@ -2,8 +2,6 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 const bcrypt = require("bcrypt");
-
-// Import middleware yang dibuat kemarin malam
 const { verifyToken } = require("../middleware/authMiddleware");
 
 // 1. Endpoint untuk mengambil tugas khusus milik karyawan yang sedang login
@@ -76,5 +74,8 @@ router.put("/change-password", verifyToken, async (req, res) => {
       .json({ message: "Gagal mengubah password", error: err.message });
   }
 });
+
+// 4. Endpoint untuk mengubah nama profil karyawan
+router.put("/profile", verifyToken, userController.updateProfile);
 
 module.exports = router;
