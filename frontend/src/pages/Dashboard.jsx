@@ -687,9 +687,9 @@ export default function Dashboard() {
       {/* --- MODAL EDIT PROFIL --- */}
       {isProfileModalOpen && (
         <div className="modal-overlay">
-          <div className="modal-box" style={{ maxWidth: "400px" }}>
+          <div className="modal-box">
             <div className="modal-header">
-              <h3 style={{ margin: 0 }}>Edit Profil</h3>
+              <h3>Edit Profil</h3>
               <button
                 type="button"
                 className="btn-close"
@@ -698,11 +698,7 @@ export default function Dashboard() {
                 ×
               </button>
             </div>
-            <form
-              onSubmit={handleUpdateProfile}
-              className="modal-form"
-              style={{ marginTop: "1rem" }}
-            >
+            <form onSubmit={handleUpdateProfile} className="modal-form">
               <div className="form-group">
                 <label className="form-label">Nama Lengkap</label>
                 <input
@@ -714,28 +710,15 @@ export default function Dashboard() {
                   onChange={(e) => setEditProfileName(e.target.value)}
                 />
               </div>
-              <div
-                className="modal-actions"
-                style={{ display: "flex", gap: "10px", marginTop: "1.5rem" }}
-              >
+              <div className="modal-actions">
                 <button
                   type="button"
                   className="btn-action btn-cancel"
-                  style={{ flex: 1 }}
                   onClick={() => setIsProfileModalOpen(false)}
                 >
                   Batal
                 </button>
-                <button
-                  type="submit"
-                  className="btn-action btn-save"
-                  style={{
-                    flex: 1,
-                    backgroundColor: "#007bff",
-                    color: "white",
-                    border: "none",
-                  }}
-                >
+                <button type="submit" className="btn-action btn-save-profile">
                   Simpan Perubahan
                 </button>
               </div>
