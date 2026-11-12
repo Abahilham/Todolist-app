@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../config/db");
 const bcrypt = require("bcrypt");
+const userController = require("../controllers/userController");
 const { verifyToken } = require("../middleware/authMiddleware");
 
 // 1. Endpoint untuk mengambil tugas khusus milik karyawan yang sedang login
