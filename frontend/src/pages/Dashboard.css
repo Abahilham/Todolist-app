@@ -698,9 +698,8 @@ body.dark-mode .btn-close:hover {
   color: #ef4444;
 }
 
-/* --- CSS UNTUK POP-UP MODAL (EDIT PROFIL & GANTI SANDI) --- */
+/* CSS UNTUK POP-UP MODAL (EDIT PROFIL & GANTI SANDI) */
 
-/* Animasi untuk latar belakang memudar */
 @keyframes fadeInOverlay {
   from {
     opacity: 0;
@@ -710,7 +709,6 @@ body.dark-mode .btn-close:hover {
   }
 }
 
-/* Animasi untuk kotak modal memantul/muncul halus */
 @keyframes popUpModal {
   from {
     opacity: 0;
@@ -733,9 +731,7 @@ body.dark-mode .btn-close:hover {
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  backdrop-filter: blur(
-    4px
-  ); /* Menambahkan efek blur pada latar belakang agar lebih elegan */
+  backdrop-filter: blur(4px);
   animation: fadeInOverlay 0.3s ease-out forwards;
 }
 
@@ -747,7 +743,6 @@ body.dark-mode .btn-close:hover {
   max-width: 400px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   color: #333333;
-  /* Menerapkan animasi pantulan (bouncy) yang interaktif */
   animation: popUpModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
@@ -756,21 +751,26 @@ body.dark-mode .btn-close:hover {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.2rem;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.8rem;
 }
 
 .modal-header h3 {
   margin: 0;
-  color: #333333; /* Warna standar */
+  color: #333333;
   transition: color 0.3s ease;
 }
 
 .btn-close {
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
   font-size: 1.8rem;
   line-height: 1;
   cursor: pointer;
   color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition:
     color 0.2s ease,
     transform 0.2s ease;
@@ -778,40 +778,27 @@ body.dark-mode .btn-close:hover {
 
 .btn-close:hover {
   color: #ff4d4f;
-  transform: scale(1.1); /* Ikon X akan sedikit membesar saat disentuh */
+  transform: scale(1.1);
 }
-
-/* --- PERBAIKAN BUG DARK MODE --- */
-/* Memaksa elemen di dalam modal beradaptasi saat dark mode aktif */
-body.dark-mode .modal-box {
-  background: #1e1e2f; /* Warna latar belakang gelap untuk kotak pop-up */
-  color: #ffffff;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-}
-
-body.dark-mode .modal-header h3 {
-  color: #ffffff; /* Memastikan judul menjadi putih */
-}
-
-body.dark-mode .modal-box .form-label {
-  color: #cccccc; /* Label input menjadi abu-abu terang */
-}
-
-body.dark-mode .modal-box .form-input {
-  background-color: #2a2a3e; /* Latar input gelap */
-  color: #ffffff; /* Teks ketikan menjadi putih */
-  border: 1px solid #3f3f5a;
-}
-
-body.dark-mode .modal-box .form-input::placeholder {
-  color: #888888; /* Warna teks petunjuk */
-}
-/* ------------------------------- */
 
 .modal-form {
   margin-top: 1rem;
 }
 
+.modal-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.modal-form .form-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  background: var(--bg-main);
+}
+
+/* LAYOUT TOMBOL MODAL */
 .modal-actions {
   display: flex;
   gap: 12px;
@@ -820,34 +807,94 @@ body.dark-mode .modal-box .form-input::placeholder {
 }
 
 .modal-actions button {
-  flex: 1; /* Membuat kedua tombol sama besar */
+  flex: 1; /* Memastikan kedua tombol sama besar */
   padding: 0.75rem 1rem;
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
   border: none;
+  font-size: 0.95rem;
 }
 
-/* Warna spesifik untuk tombol simpan profil */
-.btn-save-profile {
-  background-color: #007bff !important; /* Biru terang */
-  color: #ffffff !important; /* Teks putih */
+.btn-cancel {
+  background-color: #f1f5f9;
+  color: #475569;
   transition: background-color 0.2s;
+}
+
+.btn-cancel:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-save-profile {
+  background-color: #007bff !important;
+  color: #ffffff !important;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn-save-profile:hover {
   background-color: #0056b3 !important;
-}
-
-/* Efek saat tombol simpan ditekan atau disorot */
-.btn-save-profile:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px); /* Tombol sedikit terangkat */
+  transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
 }
 
 .btn-save-profile:active {
   transform: translateY(0);
+}
+
+/* --- PERBAIKAN BUG DARK MODE MODAL --- */
+body.dark-mode .modal-box {
+  background: #1e1e2f;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  border: 1px solid #334155;
+}
+
+body.dark-mode .modal-header {
+  border-bottom-color: #334155;
+}
+
+body.dark-mode .modal-header h3 {
+  color: #ffffff;
+}
+
+body.dark-mode .modal-box .form-label {
+  color: #cccccc;
+}
+
+body.dark-mode .modal-box .form-input {
+  background-color: #2a2a3e;
+  color: #ffffff;
+  border: 1px solid #3f3f5a;
+}
+
+body.dark-mode .modal-box .form-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+body.dark-mode .modal-box .form-input::placeholder {
+  color: #888888;
+}
+
+body.dark-mode .btn-cancel {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+body.dark-mode .btn-cancel:hover {
+  background-color: #475569;
+}
+
+body.dark-mode .btn-close {
+  color: #94a3b8;
+}
+
+body.dark-mode .btn-close:hover {
+  color: #ef4444;
 }
 
 /* 11. RESPONSIVE MOBILE (DIPISAH DENGAN RAPI) */
