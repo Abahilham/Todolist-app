@@ -13,9 +13,19 @@ export default function Login() {
     e.preventDefault();
     try {
       const res = await API.post("/auth/login", { email, password });
+
+      // Simpan token dan data user ke localStorage
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-      navigate("/dashboard");
+
+      // --- LOGIKA PENGALIHAN OTOMATIS BERDASARKAN ROLE ---
+      const userRole = res.data.user.role;
+
+      if (userRole === "admin") {
+        navigate("/admin"); // Jika role di database adalah admin, lempar ke dashboard admin
+      } else {
+        navigate("/dashboard"); // Jika role bukan admin (misal: user/karyawan), lempar ke dashboard karyawan
+      }
     } catch (err) {
       alert("Gagal login: " + (err.response?.data?.message || err.message));
     }
