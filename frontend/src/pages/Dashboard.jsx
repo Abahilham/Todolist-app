@@ -27,12 +27,17 @@ export default function Dashboard() {
 
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // --- STATE UNTUK MODAL GANTI SANDI ---
   const [isPasswordModalOpen, setIsPasswordModalOpen] = useState(false);
   const [passwordData, setPasswordData] = useState({
     oldPassword: "",
     newPassword: "",
     confirmPassword: "",
   });
+
+  // --- STATE UNTUK MODAL EDIT PROFIL ---
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [editProfileName, setEditProfileName] = useState("");
 
   const [toast, setToast] = useState({
     show: false,
@@ -89,6 +94,31 @@ export default function Dashboard() {
     } else {
       document.body.classList.remove("dark-mode");
       localStorage.setItem("darkMode", "false");
+    }
+  };
+
+  // --- FUNGSI UPDATE PROFIL (POP-UP) ---
+  const handleUpdateProfile = async (e) => {
+    e.preventDefault();
+    if (!editProfileName) return showToast("Nama tidak boleh kosong!", "error");
+
+    try {
+      const res = await API.put("/user/profile", { name: editProfileName });
+
+      // Update data di localStorage
+      const updatedUser = { ...user, name: editProfileName };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+
+      // Update state agar nama di dashboard langsung berubah
+      setUser(updatedUser);
+      setIsProfileModalOpen(false);
+      showToast("Nama profil berhasil diperbarui!", "success");
+    } catch (err) {
+      showToast(
+        "Gagal memperbarui nama: " +
+          (err.response?.data?.message || err.message),
+        "error",
+      );
     }
   };
 
@@ -363,13 +393,17 @@ export default function Dashboard() {
             {isDarkMode ? "☀️" : "🌙"}
           </button>
 
-          {/* TOMBOL EDIT PROFIL BARU */}
+          {/* TOMBOL EDIT PROFIL DIPERBARUI WARTNANYA & JADI POP-UP */}
           <button
-            onClick={() => navigate("/profile")}
+            onClick={() => {
+              setEditProfileName(user?.name || ""); // Otomatis isi form dengan nama saat ini
+              setIsProfileModalOpen(true);
+            }}
             className="btn-action btn-edit-profile"
           >
             ✏️ Edit Profil
           </button>
+
           <button
             onClick={() => setIsPasswordModalOpen(true)}
             className="btn-action btn-save"
@@ -388,6 +422,7 @@ export default function Dashboard() {
         </div>
       </header>
 
+      {/* --- BAGIAN KONTEN ANALITIK DAN TUGAS (TIDAK BERUBAH) --- */}
       <div className="analytics-grid">
         <div className="analytics-card">
           <div className="analytics-icon task-icon">📋</div>
@@ -649,6 +684,67 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {/* --- MODAL EDIT PROFIL --- */}
+      {isProfileModalOpen && (
+        <div className="modal-overlay">
+          <div className="modal-box" style={{ maxWidth: "400px" }}>
+            <div className="modal-header">
+              <h3 style={{ margin: 0 }}>Edit Profil</h3>
+              <button
+                type="button"
+                className="btn-close"
+                onClick={() => setIsProfileModalOpen(false)}
+              >
+                ×
+              </button>
+            </div>
+            <form
+              onSubmit={handleUpdateProfile}
+              className="modal-form"
+              style={{ marginTop: "1rem" }}
+            >
+              <div className="form-group">
+                <label className="form-label">Nama Lengkap</label>
+                <input
+                  type="text"
+                  required
+                  placeholder="Masukkan nama..."
+                  className="form-input"
+                  value={editProfileName}
+                  onChange={(e) => setEditProfileName(e.target.value)}
+                />
+              </div>
+              <div
+                className="modal-actions"
+                style={{ display: "flex", gap: "10px", marginTop: "1.5rem" }}
+              >
+                <button
+                  type="button"
+                  className="btn-action btn-cancel"
+                  style={{ flex: 1 }}
+                  onClick={() => setIsProfileModalOpen(false)}
+                >
+                  Batal
+                </button>
+                <button
+                  type="submit"
+                  className="btn-action btn-save"
+                  style={{
+                    flex: 1,
+                    backgroundColor: "#007bff",
+                    color: "white",
+                    border: "none",
+                  }}
+                >
+                  Simpan Perubahan
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
+      {/* --- MODAL GANTI SANDI --- */}
       {isPasswordModalOpen && (
         <div className="modal-overlay">
           <div className="modal-box" style={{ maxWidth: "400px" }}>
@@ -737,6 +833,7 @@ export default function Dashboard() {
         </div>
       )}
 
+      {/* --- TOAST NOTIFIKASI --- */}
       {toast.show && (
         <div className={`custom-toast toast-${toast.type}`}>
           <span className="toast-icon">

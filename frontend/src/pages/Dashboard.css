@@ -698,23 +698,82 @@ body.dark-mode .btn-close:hover {
   color: #ef4444;
 }
 
-/* Tambahan untuk tombol Edit Profil */
-.btn-edit-profile {
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  font-weight: bold;
+/* --- CSS UNTUK POP-UP MODAL (EDIT PROFIL & GANTI SANDI) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px; /* Membatasi lebar modal */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.btn-close:hover {
+  color: #ff4d4f;
+}
+
+.modal-form {
+  margin-top: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.modal-actions button {
+  flex: 1; /* Membuat tombol Batal dan Simpan sama panjang */
+}
+
+/* Warna khusus untuk tombol simpan profil */
+.btn-save-profile {
   background-color: #007bff;
   color: white;
   border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
   cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    transform 0.1s ease;
+  transition: background-color 0.3s ease;
 }
 
-.btn-edit-profile:hover {
+.btn-save-profile:hover {
   background-color: #0056b3;
-  transform: scale(1.02);
 }
 
 /* 11. RESPONSIVE MOBILE (DIPISAH DENGAN RAPI) */
