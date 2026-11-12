@@ -33,9 +33,6 @@ export default function App() {
 
         {/* Mengarahkan root (/) otomatis ke halaman /login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
-
-        {/* Rute Halaman Profil */}
-        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
