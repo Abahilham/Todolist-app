@@ -815,25 +815,28 @@ body.dark-mode .modal-box .form-input::placeholder {
 .modal-actions {
   display: flex;
   gap: 12px;
-  margin-top: 1.8rem;
+  margin-top: 1.5rem;
+  width: 100%;
 }
 
 .modal-actions button {
-  flex: 1;
-  padding: 0.6rem 1rem;
+  flex: 1; /* Membuat kedua tombol sama besar */
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
 }
 
+/* Warna spesifik untuk tombol simpan profil */
 .btn-save-profile {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  transition:
-    background-color 0.3s ease,
-    transform 0.1s ease,
-    box-shadow 0.3s ease;
+  background-color: #007bff !important; /* Biru terang */
+  color: #ffffff !important; /* Teks putih */
+  transition: background-color 0.2s;
+}
+
+.btn-save-profile:hover {
+  background-color: #0056b3 !important;
 }
 
 /* Efek saat tombol simpan ditekan atau disorot */
