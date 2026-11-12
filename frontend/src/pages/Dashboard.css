@@ -148,11 +148,11 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
-/* --- TOMBOL EDIT PROFIL DI HEADER --- */
+/* TOMBOL EDIT PROFIL DI HEADER */
 .btn-edit-profile {
-  background-color: var(--primary); /* Menggunakan warna biru utama tema */
-  color: #ffffff !important; /* Memaksa teks selalu putih di mode terang maupun gelap */
-  border: none;
+  background-color: transparent; /* Latar transparan di mode terang */
+  color: #0f172a !important; /* Teks warna hitam pekat di mode terang */
+  border: 1px solid #cbd5e1; /* Garis tepi agar terlihat jelas sebagai tombol */
   padding: 0.5rem 1rem;
   border-radius: 8px;
   font-weight: 600;
@@ -160,19 +160,27 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  transition: all 0.3s ease; /* Transisi halus untuk animasi */
+  transition: all 0.3s ease; /* Kunci untuk animasi halus */
 }
 
-/* Animasi saat kursor diarahkan (Interaktif) */
+/* Animasi Interaktif saat disentuh kursor (Mode Terang) */
 .btn-edit-profile:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-2px) scale(1.02); /* Efek melayang dan membesar sedikit */
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); /* Bayangan biru menyala */
+  background-color: #f1f5f9; /* Efek latar abu-abu terang */
+  transform: translateY(-2px) scale(1.02); /* Melayang dan sedikit membesar */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Bayangan lembut */
 }
 
-/* Penyesuaian bayangan saat Dark Mode aktif */
+/* --- DARK MODE UNTUK TOMBOL EDIT PROFIL --- */
 body.dark-mode .btn-edit-profile {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  background-color: transparent;
+  color: #ffffff !important; /* Teks berubah jadi putih di mode gelap */
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Animasi Interaktif saat disentuh kursor (Mode Gelap) */
+body.dark-mode .btn-edit-profile:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .btn-edit-profile:hover {
