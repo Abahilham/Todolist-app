@@ -10,7 +10,6 @@ import Register from "./pages/Register"; // Impor halaman Register
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
-import Profile from "./pages/Profile";
 import "./App.css"; // Impor CSS global untuk aplikasi
 
 export default function App() {
