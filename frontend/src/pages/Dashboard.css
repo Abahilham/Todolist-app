@@ -148,6 +148,37 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+/* --- TOMBOL EDIT PROFIL DI HEADER --- */
+.btn-edit-profile {
+  background-color: var(--primary); /* Menggunakan warna biru utama tema */
+  color: #ffffff !important; /* Memaksa teks selalu putih di mode terang maupun gelap */
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.3s ease; /* Transisi halus untuk animasi */
+}
+
+/* Animasi saat kursor diarahkan (Interaktif) */
+.btn-edit-profile:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px) scale(1.02); /* Efek melayang dan membesar sedikit */
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3); /* Bayangan biru menyala */
+}
+
+/* Penyesuaian bayangan saat Dark Mode aktif */
+body.dark-mode .btn-edit-profile {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .btn-edit-profile:hover {
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.5);
+}
+
 /* 4. BENTO GRID ANALYTICS (MODERN WIDGETS) */
 .analytics-grid {
   display: grid;

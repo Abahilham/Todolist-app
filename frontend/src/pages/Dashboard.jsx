@@ -396,7 +396,7 @@ export default function Dashboard() {
           {/* TOMBOL EDIT PROFIL DIPERBARUI WARTNANYA & JADI POP-UP */}
           <button
             onClick={() => {
-              setEditProfileName(user?.name || ""); // Otomatis isi form dengan nama saat ini
+              setEditProfileName(user?.name || "");
               setIsProfileModalOpen(true);
             }}
             className="btn-action btn-edit-profile"
