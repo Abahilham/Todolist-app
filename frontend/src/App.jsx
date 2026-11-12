@@ -5,11 +5,12 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./pages/Login"; // Impor halaman Login
 import Register from "./pages/Register"; // Impor halaman Register
 import Dashboard from "./pages/Dashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import AdminLogin from "./pages/AdminLogin";
+import Profile from "./pages/Profile";
 import "./App.css"; // Impor CSS global untuk aplikasi
 
 export default function App() {
@@ -33,6 +34,9 @@ export default function App() {
 
         {/* Mengarahkan root (/) otomatis ke halaman /login */}
         <Route path="/" element={<Navigate to="/login" replace />} />
+
+        {/* Rute Halaman Profil */}
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
